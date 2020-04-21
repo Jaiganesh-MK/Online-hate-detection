@@ -1,0 +1,35 @@
+{
+    "name": "Profanity filter",
+    "description" : "Hides vulgar, inappropriate swear words",
+    "version": "1.0",
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": "hello_extensions.png"
+    },
+
+    "manifest_version": 2,
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+F",
+          "mac": "MacCtrl+Shift+F"
+        },
+        "description": "Opens popup.html"
+      }
+    },
+
+    "permissions": ["http://localhost/*"], 
+
+    "background": {
+      "scripts": ["background.js"]
+    },
+    
+    "content_scripts": [
+      {
+        "matches": [
+          "http://*/*","https://*/*"
+        ],
+        "js": ["content.js"]
+      }
+    ]
+}
